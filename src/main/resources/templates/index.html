@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    
+    <div class="container">
+      <div class="form-group" style="width: 250px; margin-top: 10px">
+        <label for="">No Registrasi</label>
+        <input type="text" class="form-control" />
+        <label for="">Nama Pemilik</label>
+        <input type="text" class="form-control" />
+      </div>
+    </div>
+    <div class="container">
+      <button class="btn btn-primary">Search</button>
+      <a class="btn btn-primary d-flex flex-end" th:href="@{/add}">Add</a>
+    </div>
+
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>No Registrasi</th>
+            <th>Nama Pemilik</th>
+            <th>Merek Kendaraan</th>
+            <th>Tahun Pembuatan</th>
+            <th>Kapasitas</th>
+            <th>Warna</th>
+            <th>Bahan bakar</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="kendaraan : ${kendaraan}">
+            <td th:text="${kendaraan.id}"></td>
+            <td th:text="${kendaraan. noRegistrasi}"></td>
+            <td th:text="${kendaraan.namaPemilik}"></td>
+            <td th:text="${kendaraan.merek}"></td>
+            <td th:text="${kendaraan.tahun}"></td>
+            <td th:text="${kendaraan.kapasitasSilinder}"></td>
+            <td th:text="${kendaraan.warna}"></td>
+            <td th:text="${kendaraan.bahanBakar}"></td>
+            <td>
+              <a class="btn btn-success" th:href="@{/edit}">edit</a>
+              <a class="btn btn-danger" th:href="@{'/delete/'+ ${kendaraan.id}}">del</a>
+              <a class="btn btn-warning">detail</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
